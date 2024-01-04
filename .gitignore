@@ -1,6 +1,15 @@
-.env
 node_modules/
+.env
 
+login-app/           
+    .git/
+    .gitignore
+    login-app-api/
+        node_modules/
+        .env
+    login-app-frontend/
+    node_modules/
+    README.md
 # Logs
 logs
 *.log
