@@ -2,7 +2,7 @@
     background-color: #e4e4e4;
 }
 
-.register-form {
+.form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,10 +23,14 @@
 .register-password-group {
     display: flex;
     gap: 35px;
-    width: 87%;
+    width: 100%;
 }
 
 .register-input {
+    background-color: white;
+}
+
+.register-input-error {
     background-color: white;
 }
 
@@ -47,6 +51,6 @@
     cursor: pointer;
 }
 
-.goto-login:visited{
-    color:#1976d2;
+.goto-login:visited {
+    color: #1976d2;
 }

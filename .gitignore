@@ -1,5 +1,6 @@
 node_modules/
 .env
+/login-app-api/node_modules/
 
 login-app/           
     .git/
@@ -33,3 +34,6 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
+login-app-api/node_modules/nopt/bin/nopt.js
+login-app-api/node_modules
+login-app-api/node_modules/

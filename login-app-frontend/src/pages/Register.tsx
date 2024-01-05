@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, IconButton, InputAdornment, Typography } from "@mui/material";
+import { Box, Button, IconButton, InputAdornment, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import "../styles/register.css";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
@@ -120,8 +120,16 @@ export const Register = () => {
 
     return (
         <div className="register-container">
-            <form className="register-form" onSubmit={handleSubmit}>
-
+            <Box
+                className='form-container'
+                component="form"
+                sx={{
+                    '& .MuiTextField-root': { m: 1, width: '25ch' },
+                }}
+                noValidate
+                autoComplete="off"
+                onSubmit={handleSubmit}
+            >
                 <Typography style={{ "textDecoration": "underline", "color": "#6e90cd" }} variant="h3" component="div" gutterBottom>
                     Registrate!
                 </Typography>
@@ -132,11 +140,11 @@ export const Register = () => {
                             ? <TextField className="register-input" label="Nombre" variant="outlined" name="name" value={user.name} onChange={handleInputChange} />
                             : <TextField
                                 error
-                                className="register-input"
+                                className="register-input-error"
                                 id="standard-error-helper-text"
                                 label="Nombre"
                                 helperText={inputErrors.name}
-                                variant="standard"
+                                variant="filled"
                             />
 
                     }
@@ -145,11 +153,11 @@ export const Register = () => {
                             ? <TextField className="register-input" label="Apellido" variant="outlined" name="lastname" value={user.lastname} onChange={handleInputChange} />
                             : <TextField
                                 error
-                                className="register-input"
+                                className="register-input-error"
                                 id="standard-error-helper-text"
                                 label="Apellido"
                                 helperText={inputErrors.lastname}
-                                variant="standard"
+                                variant="filled"
                             />
                     }
                 </div>
@@ -160,11 +168,11 @@ export const Register = () => {
                             ? <TextField className="register-input" label="Email" variant="outlined" name="email" value={user.email} onChange={handleInputChange} />
                             : <TextField
                                 error
-                                className="register-input"
+                                className="register-input-error"
                                 id="standard-error-helper-text"
                                 label="Email"
                                 helperText={inputErrors.email}
-                                variant="standard"
+                                variant="filled"
                             />
                     }
                     {
@@ -172,11 +180,11 @@ export const Register = () => {
                             ? <TextField className="register-input" label="Apodo" variant="outlined" name="nickname" value={user.nickname} onChange={handleInputChange} />
                             : <TextField
                                 error
-                                className="register-input"
+                                className="register-input-error"
                                 id="standard-error-helper-text"
                                 label="Apodo"
                                 helperText={inputErrors.nickname}
-                                variant="standard"
+                                variant="filled"
                             />
 
                     }
@@ -207,11 +215,21 @@ export const Register = () => {
                             />
                             : <TextField
                                 error
-                                className="register-input"
+                                className="register-input-error"
                                 id="standard-error-helper-text"
                                 label="Contraseña"
+                                type={showPassword ? "text" : "password"}
                                 helperText={inputErrors.password}
-                                variant="standard"
+                                variant="filled"
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton onClick={handleTogglePassword} edge="end">
+                                                {showPassword ? <Visibility /> : <VisibilityOff />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                }}
                             />
                     }
                     {
@@ -237,16 +255,25 @@ export const Register = () => {
                             />
                             : <TextField
                                 error
-                                className="register-input"
+                                className="register-input-error"
                                 id="standard-error-helper-text"
                                 label="Confirmar Contraseña"
+                                type={showPassword ? "text" : "password"}
                                 helperText={inputErrors.confirmPassword}
-                                variant="standard"
+                                variant="filled"
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton onClick={handleToggleConfirmPassword} edge="end">
+                                                {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                }}
                             />
                     }
 
                 </div>
-
                 <Button style={{ "color": "#6e90cd", "border": "1px solid #6e90cd" }} color="success" className="register-btn" variant="outlined" type="submit">Crear cuenta</Button>
                 <div className="register-goto-login">
                     <Typography variant="body2">¿Ya tienes una cuenta?</Typography>
@@ -254,7 +281,7 @@ export const Register = () => {
                         Iniciar sesión
                     </Link>
                 </div>
-            </form>
-        </div>
+            </Box>
+        </div >
     );
 };

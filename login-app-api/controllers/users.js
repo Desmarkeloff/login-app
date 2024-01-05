@@ -1,6 +1,6 @@
 import { generarJWT } from "../helpers/jwt.js";
 import User from "../models/User.js";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs"
 
 export const createUser = async (req, res) => {
     const newUser = new User(req.body);
