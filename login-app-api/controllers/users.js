@@ -11,11 +11,11 @@ export const createUser = async (req, res) => {
 
         //Check if email already exists.
         if (existingEmail) {
-            return res.status(400).json({ ok: false, msg: "Email already exists." });
+            return res.status(400).json({ ok: false, msg: "Email already in use." });
         }
         //Check if nickname already exists.
         if (existingNickname) {
-            return res.status(400).json({ ok: false, msg: "Nickname already exists." });
+            return res.status(400).json({ ok: false, msg: "Nickname already in use." });
         }
 
         //Check if passwords match.
