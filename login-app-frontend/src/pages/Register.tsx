@@ -96,14 +96,14 @@ export const Register = () => {
             // Verificar si el error es de tipo AxiosError
             if (axios.isAxiosError(error)) {
                 if (error.response === undefined) {
-                    console.log("Error desconocido:", error);
+                //     console.log("Error desconocido:", error);
                     return;
                 }
 
                 const { errors } = error.response.data;
 
                 if (error.response) {
-                    console.error("Respuesta del servidor:", error.response.data.errors);
+                    // console.error("Respuesta del servidor:", error.response.data.errors);
 
                     //inicializo una variable para colocar todos los errores.
                     const newInputErrors: User = { ...inputErrors };
@@ -130,7 +130,7 @@ export const Register = () => {
                 }
             } else {
                 // El error no es de tipo AxiosError.
-                console.error("Error desconocido:", error);
+                // console.error("Error desconocido:", error);
                 return;
             }
         };
@@ -252,7 +252,15 @@ export const Register = () => {
                     />
 
                 </div>
-                <Button style={{ "color": "#6e90cd", "border": "1px solid #6e90cd" }} color="success" className="register-btn" variant="outlined" type="submit">Crear cuenta</Button>
+                <Button
+                    style={{ "color": "#6e90cd", "border": "1px solid #6e90cd" }}
+                    color="success"
+                    className="register-btn"
+                    variant="outlined"
+                    type="submit">
+                    Crear cuenta
+                </Button>
+                
                 <div className="register-goto-login">
                     <Typography variant="body2">¿Ya tienes una cuenta?</Typography>
                     <Link to="/login" className="goto-login">

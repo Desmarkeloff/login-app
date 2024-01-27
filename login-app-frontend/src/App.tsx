@@ -1,26 +1,20 @@
-// import { Login } from "./pages/Login";
-import { Route, Routes } from "react-router-dom";
-import { Register } from "./pages/Register";
-import { Home } from "./pages/Home";
-import { Login } from "./pages/Login";
+import { Routes, Route } from 'react-router-dom';
+import { Register } from './pages/Register';
+import { Home } from './pages/Home';
+import { Login } from './pages/Login';
+import { PrivateRoute } from './pages/PrivateRoute';
 
 function App() {
-
   return (
-    <>
-      <Routes>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<PrivateRoute />}>
         <Route path="/" element={<Home />} />
         <Route path="/new" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/*" element={<Login />} />
-      </Routes>
-    </>
+      </Route>
+      <Route path="/*" element={<Login />} />
+    </Routes>
   );
 }
 
 export default App;
-
-/*Notas:
-1- Hacer un register, luego el login.
-2- Si está autorizado, podes acceder al home, sino de una al register o login.
-3- Marcar error en el login.*/
